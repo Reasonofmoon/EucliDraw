@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f7fb"><title>EucliDraw · 수학 노트</title><link rel="stylesheet" href="./styles.css"></head>
+<body>
+<header class="topbar">
+  <a class="brand" href="./" aria-label="EucliDraw"><span class="brand-mark">E<span>·</span></span><span>EucliDraw<small>수학을 움직이는 노트</small></span></a>
+  <div class="document-title"><input id="title" aria-label="문서 이름" maxlength="120"><span id="save-state" role="status">이 브라우저에 자동 저장</span></div>
+  <div class="top-actions"><button id="undo" title="실행 취소 (Ctrl+Z)" aria-label="실행 취소">↶</button><button id="redo" title="다시 실행 (Ctrl+Shift+Z)" aria-label="다시 실행">↷</button><span class="divider"></span><button id="open">열기</button><button id="save">파일 저장</button><button id="export" class="primary">SVG 내보내기 <span>↗</span></button></div>
+</header>
+<div class="app-layout">
+  <aside class="left-panel">
+    <div class="panel-heading"><span>노트의 객체</span><span id="object-count" class="count">0</span></div>
+    <div class="list-hint">객체를 선택해 좌표와 관계를 살펴보세요.</div>
+    <div id="objects" class="object-list" aria-label="객체 목록"></div>
+    <div class="sample-card"><span class="eyebrow">첫 수업 장면</span><h2>점이 움직이면,<br>관계도 함께.</h2><p>A 또는 B를 움직여<br>중점 M을 관찰해 보세요.</p><button id="example">예제 다시 열기 <span>→</span></button><button id="new" class="quiet">빈 노트 만들기</button></div>
+    <div class="local-note"><span class="local-dot"></span>로그인 없이 · 브라우저에 저장</div>
+  </aside>
+  <main class="workspace">
+    <nav class="tools" aria-label="그리기 도구">
+      <button data-tool="select" aria-label="선택" title="선택 (V)"><span>↖</span><small>선택</small></button>
+      <button data-tool="pan" aria-label="화면 이동" title="화면 이동 (H) / Space"><span>✥</span><small>이동</small></button>
+      <span class="divider"></span>
+      <button data-tool="point" aria-label="점 만들기" title="점 (P)"><span>•</span><small>점</small></button>
+      <button data-tool="segment" aria-label="선분 만들기" title="선분 (S)"><span>╱</span><small>선분</small></button>
+      <button data-tool="line" aria-label="직선 만들기" title="직선 (L)"><span>⟷</span><small>직선</small></button>
+      <button data-tool="vector" aria-label="벡터 만들기" title="벡터 (W)"><span>↗</span><small>벡터</small></button>
+      <button data-tool="circle" aria-label="원 만들기" title="원 (C)"><span>○</span><small>원</small></button>
+      <button data-tool="polygon" aria-label="삼각형 만들기" title="삼각형 (T)"><span>△</span><small>삼각형</small></button>
+      <button data-tool="midpoint" aria-label="중점 만들기" title="중점 (M)"><span>⊙</span><small>중점</small></button>
+    </nav>
+    <div class="canvas-wrap"><svg id="canvas" xmlns="http://www.w3.org/2000/svg" aria-label="수학 좌표 편집 캔버스" role="application" tabindex="0"></svg></div>
+    <div class="view-controls"><button id="zoom-out" aria-label="축소">−</button><button id="reset-view" title="원점과 기본 배율로 이동">100%</button><button id="zoom-in" aria-label="확대">+</button><span class="divider"></span><label><input id="grid" type="checkbox">격자</label><label><input id="snap" type="checkbox">스냅</label></div>
+    <div class="coordinate-readout" id="pointer-coords">x 0.00 · y 0.00</div>
+    <footer class="canvas-status"><span id="status" role="status"></span><span class="key-hint">Space 이동 · Esc 취소</span></footer>
+  </main>
+  <aside class="right-panel"><div class="panel-heading">속성과 관계</div><div id="inspector"></div></aside>
+</div>
+<input id="file-input" type="file" accept=".json,.euclidraw,application/json" hidden>
+<dialog id="confirm-dialog"><form method="dialog"><h2 id="confirm-title">확인</h2><p id="confirm-message"></p><div class="dialog-actions"><button value="cancel">취소</button><button class="primary" value="ok">확인</button></div></form></dialog>
+<dialog id="error-dialog"><form method="dialog"><h2>입력을 확인해 주세요</h2><p id="error-message"></p><div class="dialog-actions"><button class="primary">확인</button></div></form></dialog>
+<script type="module" src="./main.js"></script>
+</body></html>
