@@ -1,0 +1,16 @@
+{
+  "name": "euclidraw-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Dependency-free first milestone of the EucliDraw math editor",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "test": "node tests/model.test.ts",
+    "test:browser": "node tests/browser.mjs"
+  }
+}

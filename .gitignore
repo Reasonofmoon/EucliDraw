@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+
+web/dist/
+web/node_modules/
+web/test-results/
+web/preview.png
